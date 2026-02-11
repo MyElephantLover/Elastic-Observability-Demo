@@ -73,3 +73,8 @@ app.listen(PORT, () => log.info({ port: PORT, errorRate, maxLatencyMs }, "Soha d
 EOF
 
 ```
+## Step 3 — Run the app
+
+```
+node app.js
+```
