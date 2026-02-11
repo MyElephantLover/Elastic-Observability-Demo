@@ -240,3 +240,17 @@ Throughput (requests/min)
 Latency (avg / p95 / p99 depending on view)
 
 Failed transaction rate (your ~10% 500s)
+
+## Create Alerts
+
+1) Go to Alerts
+
+In Kibana:
+
+Observability → Alerts → Create rule
+
+2) Choose rule type
+
+![Create Rule](image-5.png)
+
+![Logs/Log Threshold](image-6.png)
