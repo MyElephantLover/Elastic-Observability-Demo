@@ -12,6 +12,8 @@ AWS EC2 → Elastic Agent → Elastic Cloud → Kibana Observability
 
 ![Architecture Diagram](image-2.png)
 
+-- [source:] (https://www.elastic.co/guide/en/apm/get-started/6.2/overview.html)
+
 ```markdown
 User / Demo App
       │
