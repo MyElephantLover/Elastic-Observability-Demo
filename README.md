@@ -10,6 +10,8 @@ AWS EC2 → Elastic Agent → Elastic Cloud → Kibana Observability
 
 ## Architecture Diagram
 
+![Architecture Diagram](image-2.png)
+
 ```markdown
 User / Demo App
       │
@@ -28,6 +30,7 @@ Kibana Observability
    ├── Metrics
    └── Traces
 ```
+
 ### What this shows
 
 - EC2 generates telemetry (logs, metrics, traces)
