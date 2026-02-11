@@ -73,6 +73,16 @@ app.listen(PORT, () => log.info({ port: PORT, errorRate, maxLatencyMs }, "Soha d
 EOF
 
 ```
+
+### Install dependencies
+
+```
+npm init -y
+npm i express pino
+
+```
+
+
 ## Step 3 — Run the app
 
 ```
