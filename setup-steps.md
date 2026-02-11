@@ -97,3 +97,35 @@ http://<your-EC2-public-IP>:3000
 2. Verify you can search “Checkout …” in Logs/Discover
 
 3. Create an alert rule → trigger it → create a case
+
+### Ingest the log file via Fleet (Custom Logs)
+
+In Kibana
+
+Go to:
+
+Fleet → Agent Policies → (your EC2 policy)
+
+Then:
+
+Click Add Integration
+
+Search → Custom Logs
+
+Configure:
+
+Log file path
+
+```
+/var/log/demo-app.log
+```
+
+Dataset name
+
+```
+elastic-demo-app
+```
+
+Save → wait 30–60 seconds
+
+
