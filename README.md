@@ -4,13 +4,11 @@ This project demonstrates how Elastic Observability collects and visualizes logs
 
 ---
 
-# Architecture
+## Architecture
 
 AWS EC2 → Elastic Agent → Elastic Cloud → Kibana Observability
 
-# Architecture Diagram
-
-# Architecture
+## Architecture Diagram
 
 ```markdown
 User / Demo App
@@ -29,8 +27,8 @@ Kibana Observability
    ├── Logs
    ├── Metrics
    └── Traces
-
-## What this shows
+```
+### What this shows
 
 - EC2 generates telemetry (logs, metrics, traces)
 - Elastic Agent collects data
@@ -42,7 +40,7 @@ Kibana Observability
 
 ---
 
-# Demo Objectives
+## Demo Objectives
 
 - Monitor infrastructure health
 - Detect system issues in real time
@@ -81,7 +79,7 @@ Run log generator to simulate application activity
 
 ---
 
-## Author
+### Author
 
 Jenli Chen  
 
