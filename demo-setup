@@ -1,0 +1,127 @@
+## move key file to another directory
+
+mv {kay_path} {dest}
+
+## confirm it moved
+
+ls -l demo-use.pem
+
+
+## Elastic Cloud / Fleet / Add Agent
+
+
+  curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.2.5-linux-arm64.tar.gz 
+  tar xzvf elastic-agent-9.2.5-linux-arm64.tar.gz
+  cd elastic-agent-9.2.5-linux-arm64
+  sudo ./elastic-agent install --url=https://1e585166151e4d6380862c905d5e92a6.fleet.us-central1.gcp.cloud.es.io:443 --enrollment-token=b2x6elBad0JLWlFDZFFxSjRMb186YXlVcDRhYTBVaWV0XzQ3TG5tMEh0Zw==
+
+## connect to EC2
+
+  chmod 400 demo-use.pem
+
+  ssh -i demo-use.pem ec2-user@ec2-34-239-174-190.compute-1.amazonaws.com
+
+
+## Elastic Homepage
+
+https://demo.elastic.co/app/home#/
+
+## verify in Observability
+
+  https://916eeb4f824747e4aaf2a995b87a0d68.us-central1.gcp.cloud.es.io/app/observability/overview
+
+## base URL
+
+  https://916eeb4f824747e4aaf2a995b87a0d68.us-central1.gcp.cloud.es.io
+
+
+## download the correct x64-64 agent
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.2.5-linux-x86_64.tar.gz
+tar -xzf elastic-agent-9.2.5-linux-x86_64.tar.gz
+cd elastic-agent-9.2.5-linux-x86_64
+
+## verify agent running
+
+sudo elastic-agent status
+
+
+## generate some signals
+
+
+# CPU activity
+yes > /dev/null &
+
+# Disk activity
+dd if=/dev/zero of=testfile bs=1M count=1024 oflag=dsync
+
+# Log activity
+while true; do echo "Demo log event $(date)" | sudo tee -a /var/log/messages; sleep 2; done
+
+
+## How to stop it (important)
+
+# When you're done generating load:
+
+kill 6936
+
+# Or stop all yes processes:
+
+pkill yes
+pkill stress
+
+## Create Demo App on EC2
+
+# Step 1 — Install Node.js
+
+# On EC2:
+
+curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
+sudo yum install -y nodejs
+
+
+# Check:
+
+node -v
+
+# Step 2 — Create Demo App
+
+mkdir demo-app
+cd demo-app
+vim app.js
+
+# Your app is now running on port 3000.
+
+# Step 4 — Allow port 3000 in EC2 Security Group (if you have not enable this when creaing EC2 instance)
+
+# Step 5 — Test from browser
+
+Open:
+
+http://34.239.174.190:3000
+
+
+Refresh multiple times → you will see:
+
+Checkout OK
+
+Sometimes Checkout failed
+
+Logs generated in /var/log/messages or stdout
+
+
+
+## Start app:
+
+node app.js
+
+
+## Generate load:
+
+while true; do curl http://localhost:3000; sleep 1; done
+
+
+
+
+
+
