@@ -4,35 +4,45 @@ This project demonstrates how Elastic Observability collects and visualizes logs
 
 ---
 
-## Architecture
+# Architecture
 
 AWS EC2 → Elastic Agent → Elastic Cloud → Kibana Observability
 
-## Architecture Diagram
+# Architecture Diagram
 
-```mermaid
-flowchart LR
+```markdown
+# Architecture
 
-    User[User / Demo App] --> EC2[AWS EC2 Instance]
+User / Demo App
+      │
+      ▼
+AWS EC2 Instance
+      │
+      ▼
+Elastic Agent → Fleet
+      │
+      ▼
+Elastic Cloud (Elasticsearch)
+      │
+      ▼
+Kibana Observability
+   ├── Logs
+   ├── Metrics
+   └── Traces
 
-    EC2 --> Agent[Elastic Agent]
-    Agent --> Fleet[Elastic Fleet]
+## What this shows
 
-    Fleet --> ES[Elasticsearch (Elastic Cloud)]
-    ES --> Kibana[Kibana Observability]
-
-    Kibana --> Logs[Logs]
-    Kibana --> Metrics[Metrics]
-    Kibana --> Traces[APM / Tracing]
-
-    Logs --> Insight[Root Cause Analysis]
-    Metrics --> Insight
-    Traces --> Insight
+- EC2 generates telemetry (logs, metrics, traces)
+- Elastic Agent collects data
+- Fleet manages agents centrally
+- Data flows into Elasticsearch
+- Kibana provides unified observability
+- Enables **root cause detection + real-time monitoring**
 
 
 ---
 
-## Demo Objectives
+# Demo Objectives
 
 - Monitor infrastructure health
 - Detect system issues in real time
