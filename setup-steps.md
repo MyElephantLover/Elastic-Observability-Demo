@@ -59,7 +59,7 @@ node app.js
 
 ## Step 4 — Test from browser
 
-Open:
+### Open:
 
 http://{your-ip-address}:3000
 
@@ -67,9 +67,33 @@ http://{your-ip-address}:3000
 
 ![alt text](image.png)
 
-### See things like this in your browser
 
-![Checkout OK](image-3.png)
+## Step 5 - Generate traffic (so Kibana shows logs + CPU)
 
-![Checkout failure](image-4.png)
+```
+for i in {1..200}; do curl -s http://localhost:3000 >/dev/null; sleep 0.2; done
+```
 
+### Run this exactly in your EC2:
+
+```
+sudo sh -c 'nohup node app.js >> /var/log/demo-app.log 2>&1 &'
+```
+
+### Verify logs are being written
+
+```
+sudo tail -f /var/log/demo-app.log
+```
+
+### Then open your browser a few times:
+
+http://<your-EC2-public-IP>:3000
+
+### Next we’ll do 3 things in Elastic:
+
+1. Ingest /var/log/demo-app.log into Elastic
+
+2. Verify you can search “Checkout …” in Logs/Discover
+
+3. Create an alert rule → trigger it → create a case
