@@ -12,6 +12,7 @@ AWS EC2 → Elastic Agent → Elastic Cloud → Kibana Observability
 
 # Architecture
 
+```markdown
 User / Demo App
       │
       ▼
