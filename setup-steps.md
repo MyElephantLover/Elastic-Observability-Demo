@@ -203,12 +203,12 @@ server.listen(3000, () => console.log("Demo app running on port 3000"));
 
 Export the endpoint + API key you copied from Kibana:
 
-
+```
 export ELASTIC_APM_SERVER_URL="https://<your-apm-endpoint>:443"
 export ELASTIC_APM_API_KEY="<your_apm_agent_api_key>"
 
 node server.js
-
+```
 
 (If you chose secret token instead of API key, you’d set secretToken / ELASTIC_APM_SECRET_TOKEN — same idea.)
 
@@ -216,11 +216,12 @@ node server.js
 
 From the same EC2:
 
+```
 while true; do
   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/
   sleep 0.2
 done
-
+```
 
 You should see some 200 and occasional 500.
 
