@@ -254,3 +254,100 @@ Observability → Alerts → Create rule
 ![Create Rule](image-5.png)
 
 ![Logs/Log Threshold](image-6.png)
+
+
+3) Define the condition
+
+Configure:
+
+Index / Data view
+
+Use your logs index (likely logs-* or whatever Discover showed)
+
+Condition
+
+```
+WHEN count() OF logs
+WHERE message contains "Checkout ERROR"
+IS ABOVE 0
+FOR THE LAST 1 minute
+```
+
+This triggers whenever a checkout failure appears.
+
+![Example](image-7.png)
+
+## Run traffic again:
+
+```
+while true; do curl -s http://localhost:3000 > /dev/null; sleep 0.2; done
+```
+
+Within ~1 minute the rule should fire.
+
+## View the Case
+
+Go to:
+
+Observability → Cases
+
+You should see:
+
+“Checkout failures detected”
+
+## Wrap-up and Clean
+
+1) Stop the running Node app
+
+If your app is still running in the current terminal, press:
+
+```
+CTRL + C
+```
+
+2) Make sure no Node processes remain
+
+Run:
+
+```
+ps aux | grep node | grep -v grep
+```
+
+If you see any node server.js still running, stop them:
+
+```
+pkill -f server.js
+```
+
+(Or kill individually:)
+
+```
+kill -9 <PID>
+```
+
+3) Confirm port 3000 is free
+
+```
+sudo ss -ltnp | grep :3000 || echo "Port 3000 is free"
+```
+
+You want:
+
+Port 3000 is free
+
+4) (Optional) Stop traffic generator
+
+If you still have the curl loop running in another terminal:
+
+```
+CTRL + C
+```
+
+5) (Optional) Remove temporary environment variables
+
+Only needed if you exported earlier:
+
+```
+unset ELASTIC_APM_SERVER_URL
+unset ELASTIC_APM_API_KEY
+```
