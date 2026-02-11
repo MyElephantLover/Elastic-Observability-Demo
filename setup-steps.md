@@ -62,3 +62,14 @@ node app.js
 Open:
 
 http://{your-ip-address}:3000
+
+### You can see things like below in your EC2 instance
+
+![alt text](image.png)
+
+### See things like this in your browser
+
+![Checkout OK](image-3.png)
+
+![Checkout failure](image-4.png)
+
