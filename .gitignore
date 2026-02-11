@@ -1,1 +1,14 @@
 demo-setup
+
+
+# Secrets / keys
+*.pem
+*.key
+*.env
+*.token
+
+
+# Logs / temp
+*.log
+node_modules/
+.DS_Store
