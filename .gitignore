@@ -1,5 +1,6 @@
 demo-setup
 demo-runbook
+app.js
 
 # Secrets / keys
 *.pem
