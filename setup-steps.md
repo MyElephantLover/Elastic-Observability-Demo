@@ -127,7 +127,7 @@ node server.js
 
 (If you chose secret token instead of API key, you’d set secretToken / ELASTIC_APM_SECRET_TOKEN — same idea.)
 
-5) Generate traffic (so charts light up)
+5) Generate traffic
 
 From the same EC2:
 
